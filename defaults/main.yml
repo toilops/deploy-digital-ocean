@@ -1,0 +1,9 @@
+---
+## Default role variables 
+do_api_key: "{{ vault_do_api_key }}"
+do_ssh_key_id: "{{ vault_do_ssh_key_id }}"
+droplet_name: dev0ansible
+droplet_size: 512mb
+do_region: nyc3
+droplet_image_id: centos-6-x64
+do_tag_name: ansible_mng
