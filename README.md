@@ -1,7 +1,8 @@
 deploy-digital-ocean
 =========
+[![Build Status](https://travis-ci.org/BondAnthony/deploy-digital-ocean.svg?branch=master)](https://travis-ci.org/BondAnthony/deploy-digital-ocean)
 
-Create droplets within the Digital Ocean ecosystem 
+Create droplets within the Digital Ocean ecosystem. Tag all droplets to ansible managed tag, return the ip address and droplet ID. 
 
 Requirements
 ------------
