@@ -1,0 +1,13 @@
+---
+- name: Create Ansible Managed Tag
+  digital_ocean_tag:
+      api_token: "{{ do_api_key }}"
+      name: "{{ do_tag_name }}"
+      state: present
+
+- name: Tagging Droplet
+  digital_ocean_tag:
+      api_token: "{{ do_api_key }}"
+      name: "{{ do_tag_name }}"
+      resource_id: "{{ do_response.droplet.id }}"
+      state: present

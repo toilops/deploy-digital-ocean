@@ -1,0 +1,20 @@
+---
+- name: Get SSH Key ID
+  digital_ocean:
+     api_token: "{{ do_api_key }}"
+     command: ssh 
+     state: present
+     name: "{{ do_ssh_key_name }}"
+     ssh_pub_key: "{{ local_pub_key }}"
+  register: do_key_resp
+
+- name: Set ssh key facts
+  set_fact:
+    do_ssh_key_id: "{{ do_key_resp['ssh_key']['id'] }}"
+    do_key_name: "{{ do_key_resp['ssh_key']['name'] }}"
+
+- name: SSH Key Info
+  debug: 
+    msg:
+    - "ssh key id - {{ do_ssh_key_id }}"
+    - "ssh key name - {{ do_key_name }}"

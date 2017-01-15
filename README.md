@@ -30,12 +30,14 @@ The below variables are set within the defaults directory. These can be overridd
 ```yaml
 do_api_key: "{{ vault_do_api_key }}"
 do_ssh_key_id: "{{ vault_do_ssh_key_id }}"
+do_ssh_key_name: "ansible_crtl_{{ ansible_hostname }}"
 droplet_name: dev0ansible
 droplet_size: 512mb
 do_region: nyc3
 droplet_image_id: centos-6-x64
 do_tag_name: ansible_mng
 ```
+The `do_ssh_key_name` is used when adding your localhost ssh key to your Digital Ocean account. This will only run when `do_ssh_key_id` is undefined. When the role executes it will add the ssh key if the key finger print isn't found within your account. For each subsequent run the `ssh_key_id` will be used. This basically allows you to create an `ansible_crtl_hostname` key and use that key going forward.
 
 Example Playbook
 ----------------
