@@ -9,5 +9,8 @@
   digital_ocean_tag:
       api_token: "{{ do_api_key }}"
       name: "{{ do_tag_name }}"
-      resource_id: "{{ do_response.droplet.id }}"
+      resource_id: "{{ item.droplet.id }}"
       state: present
+  with_items: "{{ do_response.results }}"
+  loop_control:
+    label: "{{ item.droplet.id }}"

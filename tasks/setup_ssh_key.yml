@@ -16,5 +16,6 @@
 - name: SSH Key Info
   debug: 
     msg:
-    - "ssh key id - {{ do_ssh_key_id }}"
-    - "ssh key name - {{ do_key_name }}"
+     - "ssh key id - {{ do_ssh_key_id }}"
+     - "ssh key name - {{ do_key_name }}"
+    verbosity: 2

@@ -11,8 +11,7 @@ This role does require you to install the `dopy` python module.
 ```
 pip install -r requirements.txt
 ```
-
-SSH key needs to be set within your Digital Ocean account before using this role. You will need to pass your Digital Ocean ssh key id to the role. To find your ssh key id you can make a simple GET request to the `/v2/account/keys` api. API docs can be found [here](https://developers.digitalocean.com/documentation/v2/#list-all-keys) 
+The role will handle creating the ssh key if the `do_ssh_key_id` is undefined. When using an existing ssh key already within your Digital Ocean account you will need to retrieve the key id and set the variable. To find your ssh key id you can make a simple GET request to the `/v2/account/keys` api. API docs can be found [here](https://developers.digitalocean.com/documentation/v2/#list-all-keys) 
 
 Role Variables
 --------------
@@ -31,13 +30,16 @@ The below variables are set within the defaults directory. These can be overridd
 do_api_key: "{{ vault_do_api_key }}"
 do_ssh_key_id: "{{ vault_do_ssh_key_id }}"
 do_ssh_key_name: "ansible_crtl_{{ ansible_hostname }}"
-droplet_name: dev0ansible
+droplet_name: 
+    - dev0ansible
 droplet_size: 512mb
 do_region: nyc3
 droplet_image_id: centos-6-x64
 do_tag_name: ansible_mng
 ```
 The `do_ssh_key_name` is used when adding your localhost ssh key to your Digital Ocean account. This will only run when `do_ssh_key_id` is undefined. When the role executes it will add the ssh key if the key finger print isn't found within your account. For each subsequent run the `ssh_key_id` will be used. This basically allows you to create an `ansible_crtl_hostname` key and use that key going forward.
+
+The `droplet_name` is a list and will default to a single host called `dev0ansible`. You can increase the number of hosts by using the `--extra-vars` argument and building a list `--extra-vars='{"droplet_name":["dev1ansible","dev2ansible"]}'`
 
 Example Playbook
 ----------------

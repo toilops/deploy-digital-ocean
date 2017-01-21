@@ -4,14 +4,17 @@
       api_token: "{{ do_api_key }}" 
       state: present
       command: droplet
-      name: "{{ droplet_name }}" 
+      name: "{{ item }}" 
       size_id: "{{ droplet_size }}"
       region_id: "{{ do_region }}"
       image_id: "{{ droplet_image_id }}"
       ssh_key_ids: "{{ do_ssh_key_id }}"
+  with_items: "{{ droplet_name }}"
   register: do_response
 
 - debug:
-    msg:
-     - "Droplet ID {{ do_response.droplet.id }}"
-     - "Droplet IP {{ do_response.droplet.ip_address }}"
+    verbosity: 2
+    msg: "Droplet ID({{ item.droplet.id }}) - IP({{ item.droplet.ip_address }})"
+  with_items: "{{ do_response.results }}"
+  loop_control:
+    label: "{{ item.droplet.id }}"
