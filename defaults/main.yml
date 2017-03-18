@@ -1,5 +1,6 @@
 ---
-## Default role variables 
+## Default role variables
+local_pub_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 do_api_key: "{{ vault_do_api_key }}"
 do_ssh_key_id: "{{ vault_do_ssh_key_id }}"
 do_ssh_key_name: "ansible_crtl_{{ ansible_hostname }}"
