@@ -16,13 +16,18 @@ The role will handle creating the ssh key if the `do_ssh_key_id` is undefined. W
 Role Variables
 --------------
 
-We require the following variables to be set when including the role. I would suggest setting these variables within a vault file inside your host_vars directory.
+We require the following variables to be set when including the role. I would suggest setting these variables within a vault file inside your host_vars directory for the endpoint that will be running this play.
 ```yaml
 do_ssh_key_id: number
 ```
 and
 ```yaml
 do_api_key: string
+```
+
+The role will also load a public ssh key into your Digital Ocean account the first time it runs on this host. When the key fingerprint matches another key the role will fail. By default the role will look in `~/.ssh/id_rsa.pub`, this value can be overridden. The key name in your DO account will be`ansible_crtl_hostname` of the server this role was executed on.
+```yaml
+local_pub_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 ```
 
 The below variables are set within the defaults directory. These can be overridden if you need to deploy a bigger droplet or change your droplet name.. 
@@ -48,7 +53,7 @@ Simple role include example:
 ```yaml
     - hosts: servers
       roles:
-         - { role: BondAnthony.deploy-digital-ocean, droplet_name: dev2ansible }
+         - { role: BondAnthony.deploy-digital-ocean, droplet_name: ["dev2ansible","dev3ansible"] }
 ```
 License
 -------
