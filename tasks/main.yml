@@ -1,4 +1,4 @@
 ---
-- include: setup_ssh_key.yml
-- include: deploy_droplet.yml
-- include: tag_droplet.yml
+- include_tasks: setup_ssh_key.yml
+- include_tasks: deploy_droplet.yml
+- include_tasks: tag_droplet.yml
