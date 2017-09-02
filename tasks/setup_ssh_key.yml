@@ -1,11 +1,9 @@
 ---
-- name: Get SSH Key ID
-  digital_ocean:
-     api_token: "{{ do_api_key }}"
-     command: ssh 
-     state: present
-     name: "{{ do_ssh_key_name }}"
-     ssh_pub_key: "{{ local_pub_key }}"
+- name: Upload SSH Key
+  digital_ocean_sshkey:
+    oauth_token: "{{ do_api_key }}"
+    name: "{{ do_ssh_key_name }}"
+    public_key: "{{ local_pub_key }}"
   register: do_key_resp
 
 - name: Set ssh key facts

@@ -1,5 +1,7 @@
 ---
 - include: setup_ssh_key.yml
-  when: do_ssh_key_id is undefined
+  when: 
+    - do_ssh_key_id is undefined
+    - vault_do_ssh_key_id is undefined
 - include: create_droplet.yml
 - include: tag_droplet.yml
