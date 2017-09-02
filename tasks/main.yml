@@ -1,4 +1,5 @@
 ---
-- include_tasks: setup_ssh_key.yml
-- include_tasks: deploy_droplet.yml
-- include_tasks: tag_droplet.yml
+- include: setup_ssh_key.yml
+  when: do_ssh_key_id is undefined
+- include: create_droplet.yml
+- include: tag_droplet.yml

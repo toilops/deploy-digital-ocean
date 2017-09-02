@@ -13,7 +13,6 @@
   register: do_response
 
 - debug:
-    verbosity: 2
     msg: "Droplet ID({{ item.droplet.id }}) - IP({{ item.droplet.ip_address }})"
   with_items: "{{ do_response.results }}"
   loop_control:
