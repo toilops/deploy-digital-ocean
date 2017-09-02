@@ -210,7 +210,7 @@ galaxy_info:
   #  - Any
 
   galaxy_tags:
-    - digital ocean
+    - digitalocean
     - droplets
     - cloud
     - vps
