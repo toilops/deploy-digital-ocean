@@ -4,6 +4,7 @@
     oauth_token: "{{ do_api_key }}"
     name: "{{ do_ssh_key_name }}"
     public_key: "{{ local_pub_key }}"
+    state: present
   register: do_key_resp
 
 - name: Set ssh key facts
