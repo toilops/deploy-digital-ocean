@@ -3,14 +3,14 @@
   digital_ocean_sshkey:
     oauth_token: "{{ do_api_key }}"
     name: "{{ do_ssh_key_name }}"
-    public_key: "{{ local_pub_key }}"
+    ssh_pub_key: "{{ local_pub_key }}"
     state: present
   register: do_key_resp
 
 - name: Set ssh key facts
   set_fact:
-    do_ssh_key_id: "{{ do_key_resp['ssh_key']['id'] }}"
-    do_key_name: "{{ do_key_resp['ssh_key']['name'] }}"
+    do_ssh_key_id: "{{ do_key_resp.data.ssh_key.id }}"
+    do_key_name: "{{ do_key_resp.data.ssh_key.name }}"
 
 - name: SSH Key Info
   debug: 
