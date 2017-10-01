@@ -1,6 +1,6 @@
 deploy-digital-ocean
 =========
-[![Build Status](https://travis-ci.org/BondAnthony/deploy-digital-ocean.svg?branch=master)](https://travis-ci.org/BondAnthony/deploy-digital-ocean)
+[![Build Status](https://travis-ci.org/toilops/deploy-digital-ocean.svg?branch=master)](https://travis-ci.org/toilops/deploy-digital-ocean)
 
 Create droplets within the Digital Ocean ecosystem. Tag all droplets to ansible managed tag, return the ip address and droplet ID. 
 
@@ -56,7 +56,7 @@ Simple role include example:
     - hosts: localhost
       connection: local
       roles:
-         - { role: BondAnthony.deploy-digital-ocean, droplet_name: ["dev2ansible","dev3ansible"] }
+         - { role: toilops.deploy-digital-ocean, droplet_name: ["dev2ansible","dev3ansible"] }
 ```
 License
 -------
