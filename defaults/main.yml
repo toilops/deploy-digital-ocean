@@ -7,5 +7,5 @@ do_ssh_key_name: "ansible_crtl_{{ ansible_hostname }}"
 droplet_name: dev0ansible
 droplet_size: 512mb
 do_region: nyc3
-droplet_image_id: centos-6-x64
+droplet_image_id: centos-7-x64
 do_tag_name: ansible_mng
