@@ -1,5 +1,5 @@
 ---
-- include: setup_ssh_key.yml
+- include_tasks: setup_ssh_key.yml
   when: ("vault_do_ssh_key_id is undefined") or ("do_ssh_key_id is undefined")
-- include: create_droplet.yml
-- include: tag_droplet.yml
+- include_tasks: create_droplet.yml
+- include_tasks: tag_droplet.yml
