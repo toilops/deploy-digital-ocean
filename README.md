@@ -48,6 +48,8 @@ The `do_ssh_key_name` is used when adding your localhost ssh key to your Digital
 
 The `droplet_name` is a list and will default to a single host called `dev0ansible`. You can increase the number of hosts by adding additional hostnames to your role arguments `{"droplet_name":["dev1ansible","dev2ansible"]}`
 
+During the droplet provision process two facts will be set within your environment; `ddo_group` will contain the host ip address and `droplet_id` will contain the ID. These facts can be used to perform additional operations against the droplet.
+
 Example Playbook
 ----------------
 

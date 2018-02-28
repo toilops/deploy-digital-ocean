@@ -17,3 +17,16 @@
   with_items: "{{ do_response.results }}"
   loop_control:
     label: "{{ item.droplet.id }}"
+
+- name: Creating host group "ddo_group"
+  add_host:
+    name: "{{ item.droplet.ip_address }}"
+    groups: ddo_group
+  with_items: "{{ do_response.results }}"
+  loop_control:
+    label: "{{ item.droplet.id }}"
+
+- name: Setting droplet_id Fact
+  set_fact:
+    droplet_id: "{{ item.droplet.id }}"
+  with_items: "{{ do_response.results }}"
